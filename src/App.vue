@@ -1,14 +1,18 @@
 <template>
-  <GreetingsSlide msg="Welcome to Your Vue.js App"/>
+  <router-view />
 </template>
 
 <script>
-import GreetingsSlide from './components/GreetingsSlide.vue'
+import MenuNavigation from './components/Menu.vue';
+import GreetingsSlide from './components/GreetingsSlide.vue';
+import SlidesContainer from './components/SlidesContainer.vue';
 
 export default {
   name: 'App',
   components: {
-    GreetingsSlide
+    GreetingsSlide,
+    SlidesContainer,
+    MenuNavigation,
   }
 }
 </script>
