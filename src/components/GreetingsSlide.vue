@@ -7,8 +7,6 @@
 </template>
 <script>
 export default {
-    setup() {
-        
-    },
+    name: 'GreetingsSlide'
 }
 </script>
