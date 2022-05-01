@@ -1,6 +1,6 @@
 <template>
     <SlideComp v-bind:slide="slide" />
-    <MenuNavigation v-bind:setActiveId="setActiveId" />
+    <MenuNavigation :setIsOpen="setIsOpen" :isOpen="isOpen" :setActiveId="setActiveId" />
 </template>
 <script>
 import SlideComp from './Slide.vue';
@@ -10,6 +10,7 @@ export default {
     name: 'SlidesContainer',
     data(){
         return {
+            isOpen: false,
             activeId: 'Bio',
             slides: [
                 {
@@ -39,6 +40,9 @@ export default {
     methods: {
         setActiveId: function(id) {
             this.activeId = id;
+        },
+        setIsOpen: function() {
+            this.isOpen = !this.isOpen;
         }
     },
     components: {
