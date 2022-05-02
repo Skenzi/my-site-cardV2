@@ -20,6 +20,10 @@ body {
 body, h1, h2 {
   margin: 0;
 }
+button {
+  background-color: transparent;
+  border: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }

@@ -43,18 +43,22 @@ export default {
 .navigation__button-fold {
     display: block;
     margin: 0 auto;
-    padding: 0;
     margin-bottom: 40px;
-    border: 20px solid white;
+    padding: 0;
+    border: 20px solid transparent;
     border-bottom: 20px solid black;
     cursor: pointer;
+    transition: 1s;
+}
+.navigation.open .navigation__button-fold {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transform: rotate(180deg);
 }
 .navigation .menu__button {
     padding: 20px 40px;
-    border: none;
     background: url('../images/button-decor.png');
     background-size: 100% 100%;
-    background-color: transparent;
     cursor: pointer;
 }
 </style>
