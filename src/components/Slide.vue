@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="slide">
         <h2>{{slide.title}}</h2>
         <p>{{slide.text}}</p>
     </div>
@@ -11,3 +11,8 @@ export default {
     name: 'SlideComp'
 }
 </script>
+<style>
+    .slide {
+        
+    }
+</style>

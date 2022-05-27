@@ -38,7 +38,7 @@ export default {
 }
 .navigation__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .navigation__button-fold {
     display: block;

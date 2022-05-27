@@ -7,12 +7,21 @@ export default {
     computed: {
         classLink: function() {
             return {
-                'button-link--green': this.color === 'green'
+                'button-link--dark': this.color === 'dark'
             }
         }
     }
 }
 </script>
 <style>
-
+.button-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+}
+.button-link--dark {
+    background-color: rgb(45, 45, 45);
+}
 </style>
