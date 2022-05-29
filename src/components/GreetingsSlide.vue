@@ -1,14 +1,15 @@
 <template>
     <div :class="greetingsClasses" class="greetings">
         <div :class="contentClasses" class="greetings__content">
-            <div class="greetings__title">{{titleDinamic}}<div v-if="!isPrintedTitle" class="cursor"></div></div>
-            <div class="greetings__subtitle">{{subtitleDinamic}}<div v-if="isPrintedTitle" class="cursor"></div></div>
+            <div class="greetings__title">{{titleDinamic}}<Cursor v-if="!isPrintedTitle" class="cursor" /></div>
+            <div class="greetings__subtitle">{{subtitleDinamic}}<Cursor v-if="isPrintedTitle" class="cursor" /></div>
         </div>
         <ButtonLink v-if="isPrinted" class="greetings__link" pathTo="slides" text="Прошу за мной" />
     </div>
 </template>
 <script>
 import ButtonLink from './ButtonLink.vue';
+import Cursor from './Cursor.vue';
 
 export default {
     name: 'GreetingsSlide',
@@ -75,6 +76,7 @@ export default {
     },
     components: {
         ButtonLink,
+        Cursor,
     }
 }
 </script>
@@ -86,17 +88,11 @@ export default {
 }
 .greetings__content {
     display: flex;
-    height: 50vh;
+    height: 100vh;
     width: 100vw;
     padding: 20px;
     justify-content: center;
     flex-direction: column;
-}
-.cursor {
-    display: inline-block;
-    width: 3px;
-    height: 80%;
-    animation: blink .8s infinite;
 }
 .greetings__title {
     font-size: 52px;
@@ -105,6 +101,9 @@ export default {
     font-size: 42px;
 }
 .greetings__link {
+    position: absolute;
+    top: 50%;
+    left: 45%;
     align-self: center;
     opacity: 0;
     animation: show 2.5s 2.75s forwards;
@@ -115,14 +114,6 @@ export default {
 }
 .mirage {
     animation: mirage 1.5s .35s forwards;
-}
-@keyframes blink {
-    0% {
-        background-color: #fff;
-    }
-    100% {
-        background-color: rgb(23, 22, 22);
-    }
 }
 @keyframes mirage {
     to {

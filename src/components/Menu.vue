@@ -2,10 +2,10 @@
     <nav class="navigation" :class="classNavigation">
         <button v-on:click="setIsOpen()" class="navigation__button-fold"></button>
         <div class="navigation__wrapper">
-            <button class="menu__button" v-on:click="setActiveId('Bio')">БИО</button>
-            <button class="menu__button" v-on:click="setActiveId('Path to IT')">Путь в IT</button>
-            <button class="menu__button" v-on:click="setActiveId('Abilities')">Навыки</button>
-            <button class="menu__button" v-on:click="setActiveId('Contacts')">Контакты</button>
+            <button class="navigation__button" v-on:click="slideHandler('Bio')">БИО</button>
+            <button class="navigation__button" v-on:click="slideHandler('Path to IT')">Путь в IT</button>
+            <button class="navigation__button" v-on:click="slideHandler('Abilities')">Навыки</button>
+            <button class="navigation__button" v-on:click="slideHandler('Contacts')">Контакты</button>
         </div>
     </nav>
 </template>
@@ -13,7 +13,7 @@
 
 export default {
     name: 'MenuNavigation',
-    props: ['setActiveId', 'isOpen', 'setIsOpen'],
+    props: ['isOpen', 'setIsOpen', 'slideHandler'],
     computed: {
         classNavigation: function() {
             return {
@@ -30,8 +30,9 @@ export default {
     bottom: -100px;
     right: 0;
     left: 0;
-    box-shadow: 0 -10px 10px black;
+    box-shadow: 0 -10px 10px rgb(31, 31, 31);
     transition: 1s;
+    animation: upNavigation 2s ease-in;
 }
 .navigation.open {
     bottom: 0;
@@ -53,12 +54,17 @@ export default {
 .navigation.open .navigation__button-fold {
     margin-top: 20px;
     margin-bottom: 20px;
-    transform: rotate(180deg);
+    transform: scaleY(-1);
 }
-.navigation .menu__button {
+.navigation__button {
     padding: 20px 40px;
     background: url('../images/button-decor.png');
     background-size: 100% 100%;
     cursor: pointer;
+}
+@keyframes upNavigation {
+    from {
+        bottom: -200px;
+    }
 }
 </style>

@@ -3,6 +3,7 @@
 </template>
 <script>
 export default {
+    name: 'button-link',
     props: ['color', 'pathTo', 'text'],
     computed: {
         classLink: function() {

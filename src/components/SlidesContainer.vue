@@ -1,17 +1,20 @@
 <template>
-    <SlideComp v-bind:slide="slide" />
-    <MenuNavigation :setIsOpen="setIsOpen" :isOpen="isOpen" :setActiveId="setActiveId" />
+    <div class="slide-wrapper">
+        <Slide :slide="slide" :isChangeSlide="isChangeSlide" />
+        <MenuNavigation :setIsOpen="setIsOpen" :slideHandler="slideHandler" :isOpen="isOpen" />
+    </div>
 </template>
 <script>
-import SlideComp from './Slide.vue';
+import Slide from './Slide.vue';
 import MenuNavigation from './Menu.vue';
 
 export default {
-    name: 'SlidesContainer',
+    name: 'slides-container',
     data(){
         return {
             isOpen: false,
             activeId: 'Bio',
+            isChangeSlide: false,
             slides: [
                 {
                 title: 'Bio',
@@ -35,19 +38,35 @@ export default {
     computed: {
         slide: function() {
             return this.slides.find(slide => slide.title === this.activeId);
-        }
+        },
     },
     methods: {
-        setActiveId: function(id) {
-            this.activeId = id;
-        },
         setIsOpen: function() {
             this.isOpen = !this.isOpen;
+        },
+        slideHandler: function(id) {
+            this.isChangeSlide = true;
+            setTimeout(() => {
+                this.activeId = id;
+                this.isChangeSlide = false;
+            }, 1500)
         }
     },
     components: {
-        SlideComp,
+        Slide,
         MenuNavigation,
     }
 }
 </script>
+<style>
+.slide-wrapper {
+    height: 100vh;
+    background-color: rgb(21, 21, 21);
+    animation: undark 1s 1s ease forwards;
+}
+@keyframes undark {
+    to {
+        background-color: white;
+    }
+}
+</style>
