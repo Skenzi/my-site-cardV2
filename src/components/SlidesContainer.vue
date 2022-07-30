@@ -1,12 +1,16 @@
 <template>
     <div class="slide-wrapper">
-        <Slide :slide="slide" :isChangeSlide="isChangeSlide" />
-        <MenuNavigation :setIsOpen="setIsOpen" :slideHandler="slideHandler" :isOpen="isOpen" />
+        <SlideBio v-if="activeId === 'Bio'" :isChangeSlide="isChangeSlide" />
+        <SlideAbilities v-if="activeId === 'Abilities'" :isChangeSlide="isChangeSlide" />
+        <SlideContacts v-if="activeId === 'Contacts'" :isChangeSlide="isChangeSlide" />
+        <MenuNavigation :setIsOpen="setIsOpen" :slideHandler="slideHandler" :isOpen="isOpen" :namesSlides="namesSlides" />
     </div>
 </template>
 <script>
-import Slide from './Slide.vue';
 import MenuNavigation from './Menu.vue';
+import SlideBio from './SlideBio.vue';
+import SlideAbilities from './SlideAbilities.vue';
+import SlideContacts from './SlideContacts.vue';
 
 export default {
     name: 'slides-container',
@@ -15,31 +19,8 @@ export default {
             isOpen: false,
             activeId: 'Bio',
             isChangeSlide: false,
-            slides: [
-                {
-                title: 'Bio',
-                text: 'Bio',
-                },
-                {
-                title: 'Path to IT',
-                text: 'Path to IT',
-                },
-                {
-                title: 'Abilities',
-                text: 'Abilities',
-                },
-                {
-                title: 'Contacts',
-                text: 'Contacts',
-                }
-            ]
-        }
-    },
-    computed: {
-        slide: function() {
-            return this.slides.find(slide => slide.title === this.activeId);
-        },
-    },
+            namesSlides: ['Bio', 'Abilities', 'Contacts'],
+    }},
     methods: {
         setIsOpen: function() {
             this.isOpen = !this.isOpen;
@@ -49,24 +30,54 @@ export default {
             setTimeout(() => {
                 this.activeId = id;
                 this.isChangeSlide = false;
-            }, 1500)
+            }, 1800)
         }
     },
     components: {
-        Slide,
         MenuNavigation,
+        SlideBio,
+        SlideAbilities,
+        SlideContacts,
     }
 }
 </script>
 <style>
 .slide-wrapper {
     height: 100vh;
-    background-color: rgb(21, 21, 21);
-    animation: undark 1s 1s ease forwards;
+    animation: undark 2s linear forwards;
 }
+.slide {
+       height: 60vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       padding: 20px;
+    }
+    .slide__title--toLeft {
+        animation: toLeft 4s ease;
+    }
+    .slide__body--toLeft {
+        animation: toLeft 4.3s ease;
+    }
+    .slide__title--fromLeft {
+        animation: fromLeft 3s ease;
+    }
+    .slide__body--fromLeft {
+        animation: fromLeft 3.3s ease;
+    }
+    @keyframes fromLeft {
+        from {
+            left: -105%;
+        }
+    }
+    @keyframes toLeft {
+        to {
+            left: -115%;
+        }
+    }
 @keyframes undark {
-    to {
-        background-color: white;
+    from {
+        background-color: rgb(23, 22, 22);
     }
 }
 </style>
