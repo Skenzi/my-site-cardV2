@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import certificate from '../assets/certificatehexletjs2.png';
+import certificate from '../../assets/certificatehexletjs2.png';
 export default {
     props: ['isChangeSlide'],
     name: 'slide-bio',

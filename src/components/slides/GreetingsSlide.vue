@@ -8,8 +8,8 @@
     </div>
 </template>
 <script>
-import ButtonLink from './ButtonLink.vue';
-import Cursor from './Cursor.vue';
+import ButtonLink from '../ButtonLink.vue';
+import Cursor from '../Cursor.vue';
 
 export default {
     name: 'GreetingsSlide',

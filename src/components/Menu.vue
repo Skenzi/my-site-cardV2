@@ -48,7 +48,7 @@ export default {
 }
 .navigation__button {
     padding: 20px 40px;
-    background: url('../images/button-decor.png');
+    background: url('../assets/button-decor.png');
     background-size: 100% 100%;
     cursor: pointer;
 }

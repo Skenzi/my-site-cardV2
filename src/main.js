@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router';
 import App from './App.vue'
-import GreetingsSlide from './components/GreetingsSlide.vue';
-import SlidesContainer from './components/SlidesContainer.vue';
+import GreetingsSlide from './components/slides/GreetingsSlide.vue';
+import SlidesContainer from './components/slides/SlidesContainer.vue';
 
 const routes = [
     {

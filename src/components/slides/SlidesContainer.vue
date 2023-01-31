@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-import MenuNavigation from './Menu.vue';
+import MenuNavigation from '../Menu.vue';
 import SlideBio from './SlideBio.vue';
 import SlideAbilities from './SlideAbilities.vue';
 import SlideContacts from './SlideContacts.vue';
