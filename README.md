@@ -1,6 +1,6 @@
 # my-site-cardv2
 
-## Link -> [click](my-site-card-v2-iemw6g8hm-fitronavm-gmailcom.vercel.app)
+## Link -> [click](my-site-card-v2.vercel.app)
 
 ## Project setup
 ```
