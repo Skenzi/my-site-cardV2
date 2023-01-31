@@ -1,6 +1,6 @@
 # my-site-cardv2
 
-## Link -> [click](my-site-card-v2.vercel.app)
+## Link -> [click](https://my-site-card-v2.vercel.app/)
 
 ## Project setup
 ```
