@@ -1,23 +1,25 @@
 <template>
     <div class="slide-wrapper">
-        <SlideTemplate v-if="activeId === 'Bio'" :titleClasses="slideTitleClasses" :titleText="'Знакомство'">
-            <SlideBio :textClasses="slideTextClasses" />
-        </SlideTemplate>
-        <SlideTemplate v-if="activeId === 'Abilities'" :titleClasses="slideTitleClasses" :titleText="'Навыки'">
-            <SlideAbilities :textClasses="slideTextClasses" />
-        </SlideTemplate>
-        <SlideTemplate v-if="activeId === 'Contacts'" :titleClasses="slideTitleClasses" :titleText="'Контакты'">
-            <SlideContacts :textClasses="slideTextClasses" />
-        </SlideTemplate>
+        <TemplateSlide v-if="activeId === 'Bio'" :titleClasses="slideTitleClasses" :titleText="'Знакомство'">
+            <BioSlide :textClasses="slideTextClasses" />
+        </TemplateSlide>
+        <TemplateSlide v-if="activeId === 'Abilities'" :titleClasses="slideTitleClasses" :titleText="'Навыки'">
+            <AbilitiesSlide :textClasses="slideTextClasses" />
+        </TemplateSlide>
+        <TemplateSlide v-if="activeId === 'Contacts'" :titleClasses="slideTitleClasses" :titleText="'Контакты'">
+            <ContactsSlide :textClasses="slideTextClasses" />
+        </TemplateSlide>
+        <FinishSlide v-if="activeId === 'Finish'" :isChangeSlide="isChangeSlide" />
         <MenuNavigation :setIsOpen="setIsOpen" :slideHandler="slideHandler" :isOpen="isOpen" :namesSlides="namesSlides" />
     </div>
 </template>
 <script>
 import MenuNavigation from '../Menu.vue';
-import SlideBio from './SlideBio.vue';
-import SlideAbilities from './SlideAbilities.vue';
-import SlideContacts from './SlideContacts.vue';
-import SlideTemplate from './TemplateSlide.vue';
+import BioSlide from './BioSlide.vue';
+import AbilitiesSlide from './AbilitiesSlide.vue';
+import ContactsSlide from './ContactsSlide.vue';
+import FinishSlide from './FinishSlide.vue';
+import TemplateSlide from './TemplateSlide.vue';
 
 export default {
     name: 'slides-container',
@@ -56,10 +58,11 @@ export default {
     },
     components: {
         MenuNavigation,
-        SlideBio,
-        SlideAbilities,
-        SlideContacts,
-        SlideTemplate
+        BioSlide,
+        AbilitiesSlide,
+        ContactsSlide,
+        FinishSlide,
+        TemplateSlide
     }
 }
 </script>
