@@ -1,7 +1,5 @@
 <template>
-    <div class="slide">
-        <h2 :class=slideTitleClasses class="relitive left-0">Навыки</h2>
-        <div :class=slideTextClasses class="container-f relitive left-0">
+        <div :class=textClasses class="container-f relitive left-0">
             <section class="slide-abilities-section">
                 <h3>Языки программирования</h3>
                 <ul>
@@ -47,27 +45,12 @@
                 </ul>
             </section>
         </div>
-    </div>
 </template>
 
 <script>
 export default {
-    props: ['isChangeSlide'],
+    props: ['textClasses'],
     name: 'slide-abilities',
-    computed: {
-        slideTitleClasses: function () {
-            return {
-                'slide__title--toLeft': this.isChangeSlide,
-                'slide__title--fromLeft': !this.isChangeSlide,
-            }
-        },
-        slideTextClasses: function () {
-            return {
-                'slide__body--toLeft': this.isChangeSlide,
-                'slide__body--fromLeft': !this.isChangeSlide,
-            }
-        }
-    },
 }
 </script>
 <style>

@@ -1,8 +1,14 @@
 <template>
     <div class="slide-wrapper">
-        <SlideBio v-if="activeId === 'Bio'" :isChangeSlide="isChangeSlide" />
-        <SlideAbilities v-if="activeId === 'Abilities'" :isChangeSlide="isChangeSlide" />
-        <SlideContacts v-if="activeId === 'Contacts'" :isChangeSlide="isChangeSlide" />
+        <SlideTemplate v-if="activeId === 'Bio'" :titleClasses="slideTitleClasses" :titleText="'Знакомство'">
+            <SlideBio :textClasses="slideTextClasses" />
+        </SlideTemplate>
+        <SlideTemplate v-if="activeId === 'Abilities'" :titleClasses="slideTitleClasses" :titleText="'Навыки'">
+            <SlideAbilities :textClasses="slideTextClasses" />
+        </SlideTemplate>
+        <SlideTemplate v-if="activeId === 'Contacts'" :titleClasses="slideTitleClasses" :titleText="'Контакты'">
+            <SlideContacts :textClasses="slideTextClasses" />
+        </SlideTemplate>
         <MenuNavigation :setIsOpen="setIsOpen" :slideHandler="slideHandler" :isOpen="isOpen" :namesSlides="namesSlides" />
     </div>
 </template>
@@ -11,6 +17,7 @@ import MenuNavigation from '../Menu.vue';
 import SlideBio from './SlideBio.vue';
 import SlideAbilities from './SlideAbilities.vue';
 import SlideContacts from './SlideContacts.vue';
+import SlideTemplate from './TemplateSlide.vue';
 
 export default {
     name: 'slides-container',
@@ -19,8 +26,22 @@ export default {
             isOpen: false,
             activeId: 'Bio',
             isChangeSlide: false,
-            namesSlides: ['Bio', 'Abilities', 'Contacts'],
+            namesSlides: ['Bio', 'Abilities', 'Contacts', 'Finish'],
     }},
+    computed: {
+        slideTitleClasses: function() {
+            return {
+                'slide__title--toLeft': this.isChangeSlide,
+                'slide__title--fromLeft': !this.isChangeSlide,
+            }
+        },
+        slideTextClasses: function() {
+            return {
+                'slide__body--toLeft': this.isChangeSlide,
+                'slide__body--fromLeft': !this.isChangeSlide,
+            }
+        },
+    },
     methods: {
         setIsOpen: function() {
             this.isOpen = !this.isOpen;
@@ -38,6 +59,7 @@ export default {
         SlideBio,
         SlideAbilities,
         SlideContacts,
+        SlideTemplate
     }
 }
 </script>
@@ -47,11 +69,11 @@ export default {
     animation: undark 2s linear forwards;
 }
 .slide {
-       height: 60vh;
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       padding: 20px;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
     }
     .slide__title--toLeft {
         animation: toLeft 4s ease;

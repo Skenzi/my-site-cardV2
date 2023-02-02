@@ -1,7 +1,5 @@
 <template>
-    <div class="slide">
-        <h2 :class=slideTitleClasses class="relitive left-0">Контакты</h2>
-        <div :class=slideTextClasses class="container-f relitive left-0">
+        <div :class=textClasses class="container-f relitive left-0">
             <div class="f-row">
                 <span>Телефон: </span>
                 <a href="tel:+79221236723">8(922)-123-67-23</a>
@@ -19,35 +17,20 @@
                 <a target="_blank" href="https://github.com/Skenzi">Skenzi</a>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 export default {
-    props: ['isChangeSlide'],
+    props: ['textClasses'],
     name: 'slide-contacts',
-    computed: {
-        slideTitleClasses: function() {
-            return {
-                'slide__title--toLeft': this.isChangeSlide,
-                'slide__title--fromLeft': !this.isChangeSlide,
-            }
-        },
-        slideTextClasses: function() {
-            return {
-                'slide__body--toLeft': this.isChangeSlide,
-                'slide__body--fromLeft': !this.isChangeSlide,
-            }
-        }
-    },
 }
 </script>
 <style>
     .slide {
-       height: 60vh;
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       padding: 20px;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
     }
 </style>
